@@ -17,20 +17,21 @@ const setViewboxSvg = (list) => {
 
 const setTitleH1 = (h1) => {
     const text = 'Make remote work'
+    const mobileMenuContainer = document.getElementsByClassName('menu-container')[0]
 
     if (this.screen.width >= 1100) {
         const words = text.split(' '), [word1, word2, word3] = words
         h1.innerHTML = `${word1}<br>${word2} ${word3}`
+        mobileMenuContainer.style.height = ''
     }
 }
 
 //actions
-setViewboxSvg(linksSvgList); setViewboxSvg(sponsorsSvgList); setTitleH1(h1)
-
-// this.onresize = checkBreakPoint
+setViewboxSvg(linksSvgList); setViewboxSvg(sponsorsSvgList); this.onresize = setTitleH1(h1)
 
 burger.addEventListener('click', () => {
     const iconeTreeLines = burger.children[0], iconeCross = burger.children[1]
+    const domHeight = this.document.documentElement.scrollHeight
 
     if (mobileMenu.classList.contains('move-menu')) {
         iconeTreeLines.style.display = 'block'
@@ -41,6 +42,7 @@ burger.addEventListener('click', () => {
     } else {
         iconeCross.style.display = 'block'
         iconeTreeLines.style.display = 'none'
+        mobileMenuContainer.style.height = `${domHeight}px`
         mobileMenuContainer.style.display = 'flex'
         mobileMenu.classList.add('move-menu')
         mobileMenu.addEventListener('animationend', () => {
