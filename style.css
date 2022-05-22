@@ -1,0 +1,115 @@
+:root {--almost-white: hsl(0, 0%, 98%); --medium-grey: hsl(0, 0%, 41%); --almost-black: hsl(0, 0%, 8%); --link-attr: hsl(228, 45%, 44%); --100percent: 100%;}
+
+/* =======| RESET |======= */
+body, body * {margin: 0; padding: 0; box-sizing: border-box; font-family: 'Epilogue', sans-serif; font-size: 1em;}
+ul {list-style: none;}
+button {border: none; outline: none; background: none; cursor: pointer;}
+button[type="submit"] {border-radius: 1em; padding: 1.1em 1.3em 1em; line-height: 1; transition: .5s}
+a {text-decoration: none; white-space: nowrap;}
+
+/* =======| GENERAL |======= */
+body {display: grid; grid-template-rows: 75px auto auto; overflow-x: hidden;}
+header, main, main >div, footer {width: var(--100percent);}
+#logo, #burger, main >div section:last-child, footer {padding: 0 .75em;}
+
+/* =======| HEADER |======= */
+header, header >div {display: flex; align-items: center;}
+header >div {width: inherit; justify-content: space-between;}
+#logo {display: inherit; width: max-content; height: max-content;}
+#burger {cursor: pointer; z-index: 2;}
+#burger button:last-child {display: none;}
+.menu-container {position: absolute; width: var(--100percent); height: 100vh; justify-content: flex-end; top: 0; left: 0; background: rgb(0 0 0 / .7); z-index: 1;}
+.menu-container >div {display: flex; position: inherit; width: calc(var(--100percent) * .65); height: inherit; flex-direction: column; padding: 5em 1.875em 0 1.875em; background: var(--almost-white);}
+.menu-container >div ul li {padding: 1em 0;}
+.menu-container >div >ul >li:nth-child(-n+2) {padding: .5em 0;}
+.menu-container >div ul li button, .menu-container >div ul li button span, .menu-container >div ul li a {color: var(--medium-grey); transition: color .5s;}
+.menu-container >div ul li button {display: flex; align-items: center;}
+.menu-container >div ul li button span {margin-right: 1em;}
+.menu-container >div ul li button path {transition: stroke .5s;}
+.menu-container >div >div:last-child {display: grid; gap: .5em; text-align: center; padding-top: .7em;}
+.menu-container >div >div:last-child button {font-size: .9em; color: var(--medium-grey);}
+.menu-container >div >div:last-child button:last-child {border: 1px solid var(--medium-grey)}
+.menu-container >div ul li ul {margin-left: 1.375em}
+.menu-container >div ul li ul li a[data-svg="true"] {display: grid; grid-template-columns: 1.375em auto;}
+.menu-container >div ul li ul li svg {width: auto; height: 1.375em;}
+.menu-container >div ul li ul li span {margin-left: 1em; align-self: center;}
+
+.arrow-down.none, .arrow-up.none {display: none}
+.menu-container >div.move-menu {animation: movingMenu .3s ease-in-out}
+@keyframes movingMenu {from {left: var(--100percent)} to {left: calc(var(--100percent) * .35);}}
+
+
+/* =======| MAIN |======= */
+main {display: flex; justify-content: center;}
+main >div {display: inherit; flex-direction: column;}
+main >div section, main >div section >figure, main >div section >figure img {width: var(--100percent);}
+main >div section:first-child {display: inherit; justify-content: center;}
+main >div section:first-child figure:first-child, main section:last-child >div {margin-bottom: 2.875em;}
+main >div section:first-child figure:last-child {display: none;}
+
+main >div section:last-child >div:first-child {display: flex; flex-direction: column; justify-content: space-between; align-items: center; text-align: center;}
+main >div section:last-child >div:first-child h1, main >div section:last-child >div:first-child p {margin-bottom: 24px;}
+main >div section:last-child >div:first-child h1 {font-size: 2.2em;}
+main >div section:last-child >div:first-child p {color: var(--medium-grey); line-height: 1.6em;}
+main >div section:last-child >div:first-child button {border: 1px solid var(--almost-black); color: var(--almost-white); background: var(--almost-black);}
+
+main >div section:last-child >div:last-child ul {display: flex; justify-content: space-between; align-items: center;}
+main >div section:last-child >div:last-child ul li {width: calc(var(--100percent) * .22);}
+main >div section:last-child >div:last-child ul li svg {display: flex; width: var(--100percent); max-height: 1.5625em;}
+
+/* =======| FOOTER |======= */
+.attribution {padding: .75em; font-size: .7em; text-align: center; color: var(--almost-black);}
+.attribution a {color: var(--link-attr);}
+
+/* =======| MEDIA QUERIES |======= */
+@media screen and (min-width: 450px) {
+    header >div {padding: 0 calc(var(--100percent) * .05);}
+    #logo, #burger {padding: 0;}
+    main >div {align-items: center;}
+    main >div section {max-width: 450px;}
+}
+
+@media screen and (min-width: 650px) {
+    main >div section {max-width: calc(var(--100percent) * .7);}
+}
+
+@media screen and (min-width: 850px) {
+    #burger {display: none;}
+    .menu-container {display: block !important; position: unset; background: none; height: unset;}
+    .menu-container >div {background: none; width: var(--100percent); padding: 0 0 0 calc(var(--100percent) * .1); flex-direction: row; justify-content: space-between;}
+    .menu-container >div nav >ul {display: grid; grid-template-columns: auto auto auto auto; gap: 2em}
+    .menu-container >div nav >ul >li {position: relative; padding: .8em 0;}
+    .menu-container >div nav >ul >li:hover button >span, .menu-container >div nav >ul >li:hover >a {color: var(--almost-black);}
+    .menu-container >div nav >ul >li:hover button path {stroke: var(--almost-black) !important;}
+    .menu-container >div nav ul li button span {margin-right: .5em;}
+    .menu-container >div nav ul li ul {position: absolute; margin-left: 0; padding: 1.2em 2em; border-radius: 1em; background: var(--almost-white); box-shadow: 0 0 2em rgb(0 0 0 / .15);}
+    .menu-container >div nav ul li:nth-child(1) ul {right: 0;}
+    .menu-container >div nav ul li:nth-child(2) ul {left: 0;}
+    .menu-container >div >div:last-child {grid-template-columns: auto auto; padding-top: 0;}
+    .menu-container >div >div:last-child button {width: max-content;}
+    .menu-container >div >div:last-child button:last-child:hover {border: 1px solid var(--almost-black); color: var(--almost-black);}
+    main >div section {max-width: 595px;}
+
+}
+
+@media screen and (min-width: 1180px) {
+    main >div {flex-direction: row-reverse; justify-content: space-between; padding: 4em;}
+    main >div section {max-width: calc(var(--100percent) * .45);}
+    main >div section:first-child {max-width: 480px;}
+    main >div section:first-child figure:first-child {display: none;}
+    main >div section:first-child figure:last-child {display: block;}
+    main >div section:first-child figure:first-child, main >div section:last-child >div {margin-bottom: 0;}
+    main >div section:last-child {display: inherit; position: relative; max-width: unset; width: 530px; height: var(--100percent); flex-direction: column; justify-content: center; padding: 0;}
+    main >div section:last-child >div:first-child {text-align: left;}
+    main >div section:last-child >div:first-child h1, main >div section:last-child >div:first-child p {margin-bottom: calc(var(--100percent) * .1);}
+    main >div section:last-child >div:first-child h1 {width: var(--100percent); font-size: 4em;}
+    main >div section:last-child >div:first-child button {align-self: flex-start;}
+    main >div section:last-child >div:first-child button:hover {color: var(--almost-black); background: none;}
+    main >div section:last-child >div:first-child h1 {font-size: 5em;}
+    main >div section:last-child >div:first-child p {font-size: 1.4em;}
+    main >div section:last-child >div:last-child {position: absolute; width: var(--100percent); bottom: 0;}
+}
+
+@media screen and (min-width: 1235px) {
+    main >div {width: 1235px}
+}
